@@ -1,0 +1,15 @@
+apiVersion: pipelinesascode.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  annotations:
+    appstudio.openshift.io/application: firstresponder-demo
+    appstudio.openshift.io/component: simulator-first-responder-demo-wvpf
+    build.appstudio.openshift.io/build: "true"
+    build.appstudio.openshift.io/type: build
+    build.appstudio.openshift.io/version: "0.1"
+    pipelines.appstudio.openshift.io/type: build
+  creationTimestamp: null
+  name: simulator-first-responder-demo-wvpf
+  namespace: rhn-sa-sshaaf-tenant
+spec:
+  url: https://github.com/wildfly-extras/first-responder-demo

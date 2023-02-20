@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: simulator-first-responder-demo-wvpf
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: simulator-first-responder-demo-wvpf
+    app.kubernetes.io/part-of: firstresponder-demo
+  name: simulator-first-responder-demo-wvpf
+  namespace: rhn-sa-sshaaf-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-quarkus-app
+      app.kubernetes.io/instance: simulator-first-responder-demo-wvpf
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: java-quarkus-app
+        app.kubernetes.io/instance: simulator-first-responder-demo-wvpf
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:LedBi-simulator-first-responder-demo-wvpf
+        name: my-java-quarkus
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        - containerPort: 8080
+        resources:
+          limits:
+            cpu: 100m
+            memory: 250Mi
+          requests:
+            cpu: 10m
+            memory: 100Mi
+status: {}
